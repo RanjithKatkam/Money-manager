@@ -1,0 +1,29 @@
+.list-item {
+  display: flex;
+  list-style: none;
+  width: 460px;
+  display: flex;
+  border-width: 1px;
+  border-color: #7e858e;
+  border-style: solid;
+  justify-content: space-between;
+}
+
+.title-name {
+  color: #475569;
+  font-family: sans-serif;
+  padding: 2px 10px;
+  font-weight: 500;
+  margin-right: 40px;
+  font-size: 14px;
+}
+
+.delete-button {
+  background-color: transparent;
+  border-width: 0;
+  cursor: pointer;
+}
+
+.img {
+  width: 40%;
+}

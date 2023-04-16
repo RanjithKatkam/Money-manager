@@ -1,0 +1,56 @@
+.balance {
+  background-color: #ecfccb;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 15px;
+  border-style: solid;
+  border-color: #84cc16;
+  border-width: 2px;
+  padding: 5px 9px;
+  width: 20%;
+}
+
+.balance-name {
+  font-family: Georgia;
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.amount {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.income {
+  background-color: #cffafe;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 15px;
+  border-style: solid;
+  border-color: #06b6d4;
+  border-width: 2px;
+  padding: 5px 9px;
+  width: 20%;
+}
+
+.expenses {
+  background-color: #ede9fe;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 15px;
+  border-style: solid;
+  border-color: #7c3aed;
+  border-width: 2px;
+  padding: 5px 9px;
+  width: 20%;
+}
+
+.image {
+  width: 60px;
+  height: 60px;
+}
