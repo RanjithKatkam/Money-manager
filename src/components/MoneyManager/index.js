@@ -44,7 +44,7 @@ class MoneyManager extends Component {
 
   addTransaction = event => {
     event.preventDefault()
-    const {titleInput, amountInput, type} = this.state
+    const {titleInput, amountInput, type, balance} = this.state
 
     const newHistory = {
       id: uuidv4(),
@@ -60,7 +60,9 @@ class MoneyManager extends Component {
       this.setState(prevState => ({
         income: prevState.income + parseInt(newHistory.amount),
       }))
-    } else {
+    }
+
+    if (type === 'EXPENSES' && balance >= newHistory.amount) {
       this.setState(prevState => ({
         balance: prevState.balance - parseInt(newHistory.amount),
       }))
@@ -71,10 +73,9 @@ class MoneyManager extends Component {
 
     this.setState(prevState => ({
       historyList: [...prevState.historyList, newHistory],
-      titleInput: '',
-      amountInput: '',
-      type: 'INCOME',
     }))
+
+    this.setState({titleInput: '', amountInput: ''})
   }
 
   onDeleteItem = (id, type, amount) => {
@@ -90,10 +91,13 @@ class MoneyManager extends Component {
     if (type === 'EXPENSES') {
       this.setState(prevState => ({
         expenses: prevState.expenses - amount,
+        balance: prevState.balance + parseInt(amount),
       }))
-    } else {
+    }
+    if (type === 'INCOME') {
       this.setState(prevState => ({
-        balance: prevState.balance - amount,
+        income: prevState.income - amount,
+        balance: prevState.balance - parseInt(amount),
       }))
     }
   }
@@ -108,6 +112,7 @@ class MoneyManager extends Component {
       expenses,
       historyList,
     } = this.state
+    console.log(historyList)
     return (
       <div className="main-container">
         <div className="container">
@@ -156,7 +161,7 @@ class MoneyManager extends Component {
               <label className="label" htmlFor="select">
                 TYPE
               </label>
-              <select onClick={this.onSelectType} id="select">
+              <select onChange={this.onSelectType} id="select">
                 {transactionTypeOptions.map(eachItem => (
                   <option key={eachItem.optionId} value={eachItem.optionId}>
                     {eachItem.displayText}
